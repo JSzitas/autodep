@@ -1,3 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+^appveyor\.yml$
+^codecov\.yml$
+^\.github$
+^README\.Rmd$

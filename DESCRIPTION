@@ -11,3 +11,5 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/JSzitas/autodep
 BugReports: https://github.com/JSzitas/autodep/issues
+Suggests: 
+    covr

@@ -38,9 +38,9 @@ generate_travis <- function( pkg_name = NULL, covr = TRUE )
   cat( code , file = "./.travis.yml" )
 }
 
-make_nice_pkg <- function(stage = "experimental", covr = TRUE)
+make_nice_pkg <- function(name, stage = "experimental", covr = TRUE)
 {
-  usethis::use_mit_license()
+  usethis::use_mit_license(name = name)
   usethis::use_git()
   usethis::use_github()
 

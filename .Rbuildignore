@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^appveyor\.yml$
+^.travis\.yml$
 ^codecov\.yml$
 ^\.github$
 ^README\.Rmd$

@@ -5,12 +5,12 @@ test_that("Find imports in a file works", {
   expect_equal(names(found_imports), c("libs", "funs"))
   expect_equal(nrow(found_imports), 4)
 
-  expect_equal(found_imports$libs,
-               factor(rep("data.table", 4)))
-  expect_equal(found_imports$funs,
-               factor(c(
+  expect_equal(as.character(found_imports$libs),
+               rep("data.table", 4))
+  expect_equal(as.character(found_imports$funs),
+               c(
                  "data.table", "setkey", "as.data.table", "frollmean"
-               )))
+               ))
 })
 
 test_that("Converting imports to roxygen works", {

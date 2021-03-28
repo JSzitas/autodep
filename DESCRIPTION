@@ -1,15 +1,25 @@
 Package: autodep
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Title: Automate imports and description manipulations
+Version: 0.3.1
+Authors@R: 
+    person(given = "Juraj",
+           family = "Szitas",
+           role = c("aut", "cre"),
+           email = "szitas.juraj13@gmail.com")
+BugReports: https://github.com/JSzitas/autodep/issues
+Description: Automate the generation of package import roxygen tags, 
+             and automate adding the appropriate files to the DESCRIPTION file.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/JSzitas/autodep
-BugReports: https://github.com/JSzitas/autodep/issues
 Suggests: 
-    covr
+    covr,
+    testthat,
+    data.table
+Imports: 
+    sourcetools,
+    cli,
+    desc
+RoxygenNote: 7.1.1

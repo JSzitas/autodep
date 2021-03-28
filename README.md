@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/JSzitas/autodep?branch=master&svg=true)](https://ci.appveyor.com/project/JSzitas/autodep)
 [![Travis build
@@ -20,4 +20,34 @@ status](https://www.r-pkg.org/badges/version/autodep)](https://CRAN.R-project.or
 <!-- badges: end -->
 
 **autodep** scans a package /R directory and finds all valid
-dependencies of the form namespace::object
+dependencies of the form namespace::object. These are then rendered as
+roygen tags in the /R directory (so they are easy to read) and the
+appropriate packages are written to the description file (into the
+**Imports** section).
+
+## Installation
+
+Install easily from github via:
+
+``` r
+devtools::install_github("JSzitas/autodep")
+```
+
+(CRAN release coming soon\!)
+
+\#\#Usage
+
+**autodep** exports a single function - **autodep** which works mostly
+automatically.
+
+``` r
+autodep(path = ".", overwrite = TRUE, roxygen_file_name = "R/package_imports.R")
+```
+
+You just need to set the path to the package (via **path**), specify
+**overwrite = TRUE** (in case you have previously used autodep and wish
+to upgrade the imports) and give it the name of the file to write the
+roxygen tags to - by default **“R/package\_imports.R”**
+
+Note that the roxygen tags should always be placed in the **/R**
+project/package sub-directory.

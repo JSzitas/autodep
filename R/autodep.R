@@ -23,6 +23,7 @@ autodep <-
     # the R folder for available files
     filepaths <-
       list.files(path = paste0(path, "/R"), full.names = TRUE)
+    filepaths <- filepaths[ grep(pattern = "\\.R$", x = filepaths) ]
 
     # scan all package R files for potential imports
     all_file_imports <- lapply(filepaths, find_imports)

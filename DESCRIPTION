@@ -1,7 +1,7 @@
 Package: autodep
 Type: Package
 Title: Automate imports and description manipulations
-Version: 0.3.1
+Version: 0.5.1
 Authors@R: 
     person(given = "Juraj",
            family = "Szitas",
@@ -17,7 +17,9 @@ URL: https://github.com/JSzitas/autodep
 Suggests: 
     covr,
     testthat,
-    data.table
+    data.table,
+    dplyr, 
+    ggplot2
 Imports: 
     sourcetools,
     cli,

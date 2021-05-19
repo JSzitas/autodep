@@ -12,7 +12,7 @@ write_imports <-
       if (!overwrite)
       {
         cli::cat_bullet(
-          "Cannot overwrite existing file -",
+          "Cannot overwrite existing file - ",
           "please set overwrite to TRUE after checking your file.",
           bullet = "cross",
           col = "red"

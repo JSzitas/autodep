@@ -7,10 +7,6 @@
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/JSzitas/autodep?branch=master&svg=true)](https://ci.appveyor.com/project/JSzitas/autodep)
-[![Travis build
-status](https://travis-ci.com/JSzitas/autodep.svg?branch=master)](https://travis-ci.com/JSzitas/autodep)
 [![R build
 status](https://github.com/JSzitas/autodep/workflows/R-CMD-check/badge.svg)](https://github.com/JSzitas/autodep/actions)
 [![Codecov test
@@ -33,12 +29,11 @@ Install easily from github via:
 devtools::install_github("JSzitas/autodep")
 ```
 
-(CRAN release coming soon\!)
+## Usage
 
-\#\#Usage
-
-**autodep** exports a single function - **autodep** which works mostly
-automatically.
+Use **autodep** to automatically convert namespace::function calls to
+roxygen tags, and register the required packages in the description
+file.
 
 ``` r
 autodep(path = ".", overwrite = TRUE, roxygen_file_name = "R/package_imports.R")

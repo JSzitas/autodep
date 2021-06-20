@@ -4,6 +4,8 @@
 #'
 #' @param path The path to the package - defaults to ".".
 #' @param overwrite Whether to overwrite existing dependencies - defaults to **FALSE**.
+#' @param register_symbols Whether to try to register symbols such as the **magrittr `%>%`**,
+#' or the **data.table `:=`**. Highly experimental, and by default **FALSE**.
 #' @param roxygen_file_name The **.R** file to render the roxygen into - by default
 #' **"R/package_imports.R"**. Note that the specification of the **/R** project
 #' subdirectory is necessary.
@@ -18,6 +20,7 @@
 autodep <-
   function(path = ".",
            overwrite = FALSE,
+           register_symbols = FALSE,
            roxygen_file_name = "R/package_imports.R")
   {
     # the R folder for available files
@@ -29,6 +32,14 @@ autodep <-
     all_file_imports <- lapply(filepaths, find_imports)
     # since this is a list of data.frames, we can just rbind them
     all_file_imports <- do.call(rbind, all_file_imports)
+
+    if(register_symbols)
+    {
+      all_file_symbols <- unique(sapply(filepaths, find_symbols))
+      all_file_symbols <- register_symbols( all_file_symbols )
+      all_file_imports <- rbind( all_file_imports, all_file_symbols )
+    }
+
     # now simply deduplicate
     all_file_imports <- unique(all_file_imports)
     # write the imports first
@@ -39,6 +50,16 @@ autodep <-
       overwrite = overwrite
     )
     # write dependencies into the description file
-    write_dependencies(all_file_imports)
+    write_dependencies(all_file_imports, "Imports")
+
+    # similar for tests
+    filepaths <- list.files(path = paste0(path, "/tests/testthat"), full.names = TRUE)
+    filepaths <- filepaths[ grep(pattern = "\\.R$", x = filepaths) ]
+    all_file_imports <- lapply(filepaths, find_imports)
+    # since this is a list of data.frames, we can just rbind them
+    all_file_imports <- do.call(rbind, all_file_imports)
+    all_file_imports <- unique(all_file_imports)
+    # write dependencies into the description file
+    write_dependencies(all_file_imports, "Suggests")
   }
 # nocov end

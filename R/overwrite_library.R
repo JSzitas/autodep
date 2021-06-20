@@ -1,12 +1,14 @@
 #' Reformat from library calls
 #' @description Replace calls to library with namespace::functions
 #' @param file The file to fix the calls in.
+#' @param outfile The file to write the output by default - defaults to **NULL** and does not write
+#' to a file.
 #' @param consider_loaded_namespaces Look for potential matches to function in loaded namespaces.
 #' @param remove_lib_calls Remove the calls to library/require after replacements are done.
 #' @return The fixed code (as a string).
 #'
 #' @export
-fix_library_calls <- function(file, consider_loaded_namespaces = FALSE, remove_lib_calls = FALSE) {
+fix_library_calls <- function(file, outfile = NULL, consider_loaded_namespaces = FALSE, remove_lib_calls = FALSE) {
   matches <- sourcetools::tokenize_file(file)
   matches <- matches[matches$type != "whitespace", ]
 
@@ -106,5 +108,15 @@ fix_library_calls <- function(file, consider_loaded_namespaces = FALSE, remove_l
                            x = original_file)
   }
 
-  return( original_file )
+  if( !is.null( outfile ) )
+  {
+    cat( paste0(original_file,"\n"), file = outfile )
+    temp <- tempfile()
+    sink( temp )
+    styler::style_file( outfile )
+    unlist( temp )
+    sink(NULL)
+  }
+
+  invisible( original_file )
 }

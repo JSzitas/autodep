@@ -3,7 +3,8 @@ write_imports <-
   function(roxygen_imports,
            path = ".",
            pkg_import_file = "R/package_imports.R",
-           overwrite = FALSE)
+           overwrite = FALSE,
+           add = FALSE)
   {
     pkg_import_filepath <- paste0(path, "/", pkg_import_file)
     if (file.exists(pkg_import_filepath))
@@ -24,6 +25,7 @@ write_imports <-
     {
       file.create(pkg_import_filepath)
     }
+
     cat(roxygen_imports, file = pkg_import_filepath, sep = "\n")
 
     if (all.equal(readLines(pkg_import_filepath), roxygen_imports))
@@ -43,11 +45,11 @@ write_imports <-
     }
   }
 # nocov start
-write_dependencies <- function(imports)
+write_dependencies <- function(imports, type = "Imports")
 {
   libs <-
     data.frame(
-      type = "Imports",
+      type = type,
       package = unique(imports$libs),
       version = "*"
     )

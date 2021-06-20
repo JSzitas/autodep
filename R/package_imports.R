@@ -1,4 +1,5 @@
 #' @importFrom sourcetools tokenize_file
+#' @importFrom styler style_file
 #' @importFrom cli cli_alert
 #' @importFrom cli cat_bullet
 #' @importFrom desc desc_get_deps

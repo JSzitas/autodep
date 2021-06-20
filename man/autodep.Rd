@@ -7,6 +7,7 @@
 autodep(
   path = ".",
   overwrite = FALSE,
+  register_symbols = FALSE,
   roxygen_file_name = "R/package_imports.R"
 )
 }
@@ -14,6 +15,9 @@ autodep(
 \item{path}{The path to the package - defaults to ".".}
 
 \item{overwrite}{Whether to overwrite existing dependencies - defaults to **FALSE**.}
+
+\item{register_symbols}{Whether to try to register symbols such as the **magrittr `%>%`**,
+or the **data.table `:=`**. Highly experimental, and by default **FALSE**.}
 
 \item{roxygen_file_name}{The **.R** file to render the roxygen into - by default
 **"R/package_imports.R"**. Note that the specification of the **/R** project

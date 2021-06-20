@@ -6,12 +6,16 @@
 \usage{
 fix_library_calls(
   file,
+  outfile = NULL,
   consider_loaded_namespaces = FALSE,
   remove_lib_calls = FALSE
 )
 }
 \arguments{
 \item{file}{The file to fix the calls in.}
+
+\item{outfile}{The file to write the output by default - defaults to **NULL** and does not write
+to a file.}
 
 \item{consider_loaded_namespaces}{Look for potential matches to function in loaded namespaces.}
 

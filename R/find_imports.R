@@ -12,6 +12,7 @@ find_imports <- function(file)
   matches <- which(tokens$value == "::")
   libs <- tokens[matches - 1, "value"]
   funs <- tokens[matches + 1, "value"]
+
   return(data.frame(libs = libs, funs = funs))
 }
 # convert parsed imports into roxygen tags

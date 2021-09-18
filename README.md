@@ -10,7 +10,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.ti
 [![R build
 status](https://github.com/JSzitas/autodep/workflows/R-CMD-check/badge.svg)](https://github.com/JSzitas/autodep/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/JSzitas/autodep/branch/master/graph/badge.svg)](https://codecov.io/gh/JSzitas/autodep?branch=master)
+coverage](https://codecov.io/gh/JSzitas/autodep/branch/main/graph/badge.svg)](https://codecov.io/gh/JSzitas/autodep?branch=main)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/autodep)](https://CRAN.R-project.org/package=autodep)
 <!-- badges: end -->

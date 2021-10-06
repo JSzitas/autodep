@@ -25,7 +25,7 @@ write_imports <-
     {
       file.create(pkg_import_filepath)
     }
-    roxygen_imports <- c(roxygen_imports, ".autodep_package_imports <- TRUE")
+    roxygen_imports <- c(roxygen_imports, "NULL")
     cat(roxygen_imports, file = pkg_import_filepath, sep = "\n")
 
     if (all.equal(readLines(pkg_import_filepath), roxygen_imports))

@@ -15,7 +15,7 @@ test_that("Writing a pkg imports file works", {
       "#' @importFrom data.table setkey",
       "#' @importFrom data.table as.data.table",
       "#' @importFrom data.table frollmean",
-      ".autodep_package_imports <- TRUE"
+      "NULL"
     )
   )
 
@@ -42,7 +42,7 @@ test_that("Writing a pkg imports file works", {
       "#' @importFrom data.table setkey",
       "#' @importFrom data.table as.data.table",
       "#' @importFrom data.table frollmean",
-      ".autodep_package_imports <- TRUE"
+      "NULL"
     )
   )
   # clean up

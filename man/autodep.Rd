@@ -8,7 +8,8 @@ autodep(
   path = ".",
   overwrite = FALSE,
   register_symbols = FALSE,
-  roxygen_file_name = "R/package_imports.R"
+  roxygen_file_name = "R/package_imports.R",
+  ignore_base_package = TRUE
 )
 }
 \arguments{
@@ -22,6 +23,10 @@ or the **data.table `:=`**. Highly experimental, and by default **FALSE**.}
 \item{roxygen_file_name}{The **.R** file to render the roxygen into - by default
 **"R/package_imports.R"**. Note that the specification of the **/R** project
 subdirectory is necessary.}
+
+\item{ignore_base_package}{Whether to ignore the base package imports (this is an option only
+for the corner cases where someone **might** want to import the base environment, which
+we anticipate will never happen). Defaults to **TRUE**.}
 }
 \description{
 Automatically register namespace::function calls

@@ -1,5 +1,5 @@
 # find package imports, using a simple tokenization scheme
-find_imports <- function(file)
+find_imports <- function(file, ignore_package_base = TRUE)
 {
   tokens <- sourcetools::tokenize_file(file)
   # get rid of whitespace and comments
@@ -13,7 +13,13 @@ find_imports <- function(file)
   libs <- tokens[matches - 1, "value"]
   funs <- tokens[matches + 1, "value"]
 
-  return(data.frame(libs = libs, funs = funs))
+  # turn the requirements into a data.frame
+  requirements <- data.frame(libs = libs, funs = funs)
+  # optionally filter out base package imports
+  if( ignore_package_base ) {
+    requirements <- requirements[ which(libs != "base"), ]
+  }
+  return(requirements)
 }
 # convert parsed imports into roxygen tags
 imports_to_roxygen <- function(imports)

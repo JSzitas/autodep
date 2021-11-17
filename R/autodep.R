@@ -9,6 +9,9 @@
 #' @param roxygen_file_name The **.R** file to render the roxygen into - by default
 #' **"R/package_imports.R"**. Note that the specification of the **/R** project
 #' subdirectory is necessary.
+#' @param ignore_base_package Whether to ignore the base package imports (this is an option only
+#' for the corner cases where someone **might** want to import the base environment, which
+#' we anticipate will never happen). Defaults to **TRUE**.
 #' @details This function automatically writes package dependencies and generates
 #' roxygen tags to import necessary dependencies for a package, specified via
 #' the namespace::function convention. Write your code like you always would, and
@@ -21,7 +24,8 @@ autodep <-
   function(path = ".",
            overwrite = FALSE,
            register_symbols = FALSE,
-           roxygen_file_name = "R/package_imports.R")
+           roxygen_file_name = "R/package_imports.R",
+           ignore_base_package = TRUE)
   {
     # the R folder for available files
     filepaths <-
@@ -29,7 +33,7 @@ autodep <-
     filepaths <- filepaths[ grep(pattern = "\\.R$", x = filepaths) ]
 
     # scan all package R files for potential imports
-    all_file_imports <- lapply(filepaths, find_imports)
+    all_file_imports <- lapply(filepaths, find_imports, ignore_package_base = ignore_base_package)
     # since this is a list of data.frames, we can just rbind them
     all_file_imports <- do.call(rbind, all_file_imports)
 

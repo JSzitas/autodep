@@ -61,7 +61,7 @@ autodep <-
     filepaths <- filepaths[ grep(pattern = "\\.R$", x = filepaths) ]
     all_file_imports_tests <- lapply(filepaths, find_imports, ignore_package_base = ignore_base_package)
     if( length(all_file_imports_tests) == 0 ) {
-      return(invisble())
+      return(invisible())
     }
     # since this is a list of data.frames, we can just rbind them
     all_file_imports_tests <- do.call(rbind, all_file_imports)

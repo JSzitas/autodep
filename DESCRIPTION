@@ -1,7 +1,7 @@
 Package: autodep
 Type: Package
 Title: Automate imports and description manipulations
-Version: 0.8.4
+Version: 0.8.3
 Authors@R: 
     person(given = "Juraj",
            family = "Szitas",

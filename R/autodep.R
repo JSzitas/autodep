@@ -59,15 +59,15 @@ autodep <-
     # similar for tests
     filepaths <- list.files(path = paste0(path, "/tests/testthat"), full.names = TRUE)
     filepaths <- filepaths[ grep(pattern = "\\.R$", x = filepaths) ]
-    all_file_imports_tests <- lapply(filepaths, find_imports, ignore_package_base = ignore_base_package)
-    if( length(all_file_imports_tests) == 0 ) {
+    all_file_imports <- lapply(filepaths, find_imports, ignore_package_base = ignore_base_package)
+    if( length(all_file_imports) == 0 ) {
       return(invisible())
     }
     # since this is a list of data.frames, we can just rbind them
-    all_file_imports_tests <- do.call(rbind, all_file_imports)
-    all_file_imports_tests <- unique(all_file_imports)
+    all_file_imports <- do.call(rbind, all_file_imports)
+    all_file_imports <- unique(all_file_imports)
     # write dependencies into the description file
-    write_dependencies(all_file_imports_tests, "Suggests")
+    write_dependencies(all_file_imports, "Suggests")
     invisible()
   }
 # nocov end

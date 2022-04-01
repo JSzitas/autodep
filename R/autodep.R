@@ -25,23 +25,21 @@ autodep <-
            overwrite = FALSE,
            register_symbols = FALSE,
            roxygen_file_name = "R/package_imports.R",
-           ignore_base_package = TRUE)
-  {
+           ignore_base_package = TRUE) {
     # the R folder for available files
     filepaths <-
       list.files(path = paste0(path, "/R"), full.names = TRUE)
-    filepaths <- filepaths[ grep(pattern = "\\.R$", x = filepaths) ]
+    filepaths <- filepaths[grep(pattern = "\\.R$", x = filepaths)]
 
     # scan all package R files for potential imports
     all_file_imports <- lapply(filepaths, find_imports, ignore_package_base = ignore_base_package)
     # since this is a list of data.frames, we can just rbind them
     all_file_imports <- do.call(rbind, all_file_imports)
 
-    if(register_symbols)
-    {
+    if (register_symbols) {
       all_file_symbols <- unique(sapply(filepaths, find_symbols))
-      all_file_symbols <- register_symbols( all_file_symbols )
-      all_file_imports <- rbind( all_file_imports, all_file_symbols )
+      all_file_symbols <- register_symbols(all_file_symbols)
+      all_file_imports <- rbind(all_file_imports, all_file_symbols)
     }
 
     # now simply deduplicate
@@ -58,18 +56,18 @@ autodep <-
 
     # similar for tests
     filepaths <- list.files(path = paste0(path, "/tests/testthat"), full.names = TRUE)
-    filepaths <- filepaths[ grep(pattern = "\\.R$", x = filepaths) ]
+    filepaths <- filepaths[grep(pattern = "\\.R$", x = filepaths)]
     all_file_suggests <- lapply(filepaths, find_imports, ignore_package_base = ignore_base_package)
-    if( length(all_file_suggests) == 0 ) {
+    if (length(all_file_suggests) == 0) {
       return(invisible())
     }
     # since this is a list of data.frames, we can just rbind them
     all_file_suggests <- do.call(rbind, all_file_suggests)
     all_file_suggests <- unique(all_file_suggests)
     # filter out the libraries which we already have in imports
-    all_file_suggests <- all_file_suggests[ !(all_file_suggests %in% all_file_imports) ]
+    all_file_suggests <- all_file_suggests[all_file_suggests$lib %in% setdiff(all_file_suggests$libs, all_file_imports$libs), ]
     # write dependencies into the description file
     write_dependencies(all_file_suggests, "Suggests")
     invisible()
-  }
+}
 # nocov end

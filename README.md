@@ -7,8 +7,7 @@
 
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![R build
-status](https://github.com/JSzitas/autodep/workflows/R-CMD-check/badge.svg)](https://github.com/JSzitas/autodep/actions)
+[![R-CMD-check](https://github.com/JSzitas/autodep/workflows/R-CMD-check/badge.svg)](https://github.com/JSzitas/autodep/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/JSzitas/autodep/branch/main/graph/badge.svg)](https://codecov.io/gh/JSzitas/autodep?branch=main)
 [![CRAN

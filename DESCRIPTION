@@ -1,7 +1,7 @@
 Package: autodep
 Type: Package
 Title: Automate imports and description manipulations
-Version: 0.8.4
+Version: 0.8.5
 Authors@R: 
     person(given = "Juraj",
            family = "Szitas",
@@ -14,16 +14,15 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/JSzitas/autodep
-Suggests: 
-    data.table,
-    fs,
-    covr,
-    testthat,
-    dplyr,
-    ggplot2
+RoxygenNote: 7.1.2
 Imports: 
     sourcetools,
     styler,
     cli,
     desc
-RoxygenNote: 7.1.2
+Suggests: 
+    data.table,
+    fs,
+    dplyr,
+    ggplot2,
+    testthat
